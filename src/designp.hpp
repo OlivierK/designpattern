@@ -10,5 +10,11 @@ public:
 private:
   Evaluator();
   Evaluator(const Evaluator&);
-
 };
+
+
+
+
+
+
+
