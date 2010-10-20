@@ -11,6 +11,7 @@ public:
   virtual Composant* terme(vector<string> &l,int &i){}
   virtual Composant* facteur(vector<string> &l,int &i){}
   virtual double calculer(){}
+  virtual ~Composant(){}
 protected:
   Composant();
 };

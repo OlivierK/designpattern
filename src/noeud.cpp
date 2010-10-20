@@ -64,3 +64,8 @@ double Noeud::calculer(){
     return gauche->calculer() / droite->calculer();
 }
 
+Noeud::~Noeud(){
+  delete gauche;
+  delete droite;
+}
+

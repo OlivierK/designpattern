@@ -1,5 +1,5 @@
 INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
 LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})
-ADD_EXECUTABLE(test1 test.cpp designp.cpp noeud.cpp feuille.cpp composant.cpp)
+ADD_EXECUTABLE(test1 test.cpp designp.cpp noeud.cpp feuille.cpp composant.cpp variable.cpp)
 ADD_TEST(designp_test test1)
 TARGET_LINK_LIBRARIES(test1 ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
