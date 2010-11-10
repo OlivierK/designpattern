@@ -7,6 +7,7 @@ public:
   Composant* pRacine;
   int ref;
   Expression(Composant* pCmp);
+  ~Expression();
 };
 
 #endif

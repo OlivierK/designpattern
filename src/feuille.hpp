@@ -17,6 +17,7 @@ public:
   Feuille(const std::string &valeur);
   Feuille* clone();
   double calculer();
+  ~Feuille();
 };
 
 #endif

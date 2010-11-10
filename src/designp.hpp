@@ -8,7 +8,6 @@ using namespace std;
 
 class Evaluator{
 public:
-  string derniereOp;
   vector<Variable> variables;
   vector<Expression*> pile;
   double eval(const string& expr);
@@ -18,10 +17,12 @@ public:
   void store(const string& var,double val);
   double getValeur(const string& var) throw(exception);
   void pileDup();
+  void pilePop();
   void compose(const string &op);
-private:
+  ~Evaluator();
   Evaluator();
   Evaluator(const Evaluator&);
+private:
   int varIndex(const string& var);
 };
 #endif

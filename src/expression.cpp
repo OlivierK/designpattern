@@ -5,3 +5,8 @@ Expression::Expression(Composant* pCmp){
   ref=1;
 }
   
+Expression::~Expression(){
+  ref--;
+  if(ref==0)
+    delete pRacine;
+}

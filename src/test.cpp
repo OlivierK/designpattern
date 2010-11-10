@@ -23,7 +23,7 @@ BOOST_AUTO_TEST_CASE(designp_test1){
   BOOST_CHECK_EQUAL(r1,2.0);
   BOOST_CHECK_EQUAL(r2,7.0);
   BOOST_CHECK_EQUAL(r3,18.5);
-  e.store("a",2.);
+   e.store("a",2.);
   double r4 = e.eval("a + 6. / a"); // r1 = 5.
   BOOST_CHECK_EQUAL(r4,5.0);
   e.set("a",6.);
@@ -33,15 +33,15 @@ BOOST_AUTO_TEST_CASE(designp_test1){
   e.pileDup();
   double r6 = e.eval(); // r6 = 7.
   BOOST_CHECK_EQUAL(r6,7);
-  e.pile.pop_back();
+   e.pilePop();
   double r7 = e.eval(); // r7 = 7.
   BOOST_CHECK_EQUAL(r7,7);
-  e.pile.pop_back();
+  e.pilePop();
   double r8 = e.eval(); // r8 = 18.5
    BOOST_CHECK_EQUAL(r8,18.5);
   e.eval ( "1 + 1" );
-  e.compose("*");
-  double r9 = e.eval(); //r9= (1+1) * (18.5)
-  BOOST_CHECK_EQUAL(r9,37);
+   e.compose("*");
+   double r9 = e.eval(); //r9= (1+1) * (18.5)
+   BOOST_CHECK_EQUAL(r9,37);
 
 }

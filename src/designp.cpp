@@ -66,14 +66,22 @@ Evaluator& Evaluator::instance(){
 	return evaluator;
 }
 Evaluator::Evaluator(){
-	derniereOp="";
+}
+Evaluator::~Evaluator(){
+  for(int i=0;i<pile.size();i++)
+    delete pile.at(i);
 }
 Evaluator::Evaluator(const Evaluator&){}
 
 void Evaluator::pileDup(){
-	Expression* aExpr=pile.back();
-	aExpr->ref++;
-	pile.push_back(aExpr);
+  if(pile.size()>0){
+    Expression *pExpr=pile.back();
+    pExpr->ref++;
+    pile.push_back(pExpr);
+  }
+}
+void Evaluator::pilePop(){
+  pile.pop_back();
 }
 void Evaluator::compose(const string &op){
 	if(pile.size()>1){

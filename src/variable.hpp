@@ -14,8 +14,8 @@ public:
 	string nom;
 	double valeur;
 public:
-	Variable(string aNom, double aVal);
-	void setValeur(double aVal);
+  Variable(string aNom, double aVal);
+  void setValeur(double aVal);
 };
 
 #endif /* VARIABLE_HPP_ */

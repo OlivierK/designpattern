@@ -26,4 +26,7 @@ Feuille::Feuille(const string &val){
   valeur=val;
 }
 
+Feuille::~Feuille(){
+}
+
 
