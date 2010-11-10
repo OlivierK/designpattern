@@ -18,6 +18,10 @@ double Feuille::calculer(){
 
 }
 
+Feuille* Feuille::clone(){
+	return new Feuille(valeur);
+}
+
 Feuille::Feuille(const string &val){
   valeur=val;
 }

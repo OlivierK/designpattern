@@ -62,10 +62,16 @@ double Noeud::calculer(){
     return gauche->calculer() * droite->calculer();
   else if(operation.compare( "/")==0)
     return gauche->calculer() / droite->calculer();
+  else
+	  return NULL;
 }
 
 Noeud::~Noeud(){
   delete gauche;
   delete droite;
+}
+
+Noeud* Noeud::clone(){
+	return new Noeud(operation,gauche->clone(),droite->clone());
 }
 

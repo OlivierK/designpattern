@@ -12,6 +12,7 @@ public:
   virtual Composant* facteur(vector<string> &l,int &i){}
   virtual double calculer(){}
   virtual ~Composant(){}
+  virtual Composant* clone(){}
 protected:
   Composant();
 };

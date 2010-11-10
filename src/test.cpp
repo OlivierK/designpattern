@@ -30,4 +30,18 @@ BOOST_AUTO_TEST_CASE(designp_test1){
   double r5 = e.eval(); // r2 = 7.
   BOOST_CHECK_EQUAL(r5,7);
 
+  e.pileDup();
+  double r6 = e.eval(); // r6 = 7.
+  BOOST_CHECK_EQUAL(r6,7);
+  e.pile.pop_back();
+  double r7 = e.eval(); // r7 = 7.
+  BOOST_CHECK_EQUAL(r7,7);
+  e.pile.pop_back();
+  double r8 = e.eval(); // r8 = 18.5
+   BOOST_CHECK_EQUAL(r8,18.5);
+  e.eval ( "1 + 1" );
+  e.compose("*");
+  double r9 = e.eval(); //r9= (1+1) * (18.5)
+  BOOST_CHECK_EQUAL(r9,37);
+
 }

@@ -24,6 +24,7 @@ public:
   Composant* expression(vector<string> &l,int &i) ;
   Composant* terme(vector<string> &l,int &i);
   Composant* facteur(vector<string> &l,int &i);
+  Noeud* clone();
   ~Noeud();
 };
 #endif

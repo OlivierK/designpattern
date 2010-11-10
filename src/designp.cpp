@@ -8,36 +8,35 @@
 #include "feuille.hpp"
 #include "noeud.hpp"
 #include "variable.hpp"
+#include "expression.hpp"
 using namespace std;
 
-double Evaluator::eval(const string& expr){
-	if(expr.compare("")==0){
+double Evaluator::eval(const string& ex){
+	if(ex.compare("")==0)
 		return 0.0;
-	}
-	derniereOp=expr;
 	vector<string> vec;
-	boost::split(vec,expr,boost::is_any_of(" "));
+	boost::split(vec,ex,boost::is_any_of(" "));
 	Noeud arbre;
 	Composant* pCmp;
 	for(int j=0;j<vec.size();j++){
 		if (vec[j].compare("")==0)
-		vec.erase(vec.begin()+j);
+			vec.erase(vec.begin()+j);
 	}
 	int i=0;
 	pCmp=arbre.expression(vec,i);
-	double res= pCmp->calculer();
-	delete pCmp;
-	return res;
+	Expression* aExpr=new Expression(pCmp);
+	pile.push_back(aExpr);
+	return pCmp->calculer();
 }
 double Evaluator::eval(){
-	return eval(derniereOp);
+	return pile.back()->pRacine->calculer();
 }
 
 int Evaluator::varIndex(const string& var){
 
 	for(int j=0;j<variables.size();j++){
-			if (variables[j].nom.compare(var)==0)
-				return j;
+		if (variables[j].nom.compare(var)==0)
+			return j;
 	}
 	return -1;
 }
@@ -63,14 +62,28 @@ double Evaluator::getValeur(const string& var) throw(exception){
 }
 
 Evaluator& Evaluator::instance(){
-  static Evaluator evaluator;
-  return evaluator;
+	static Evaluator evaluator;
+	return evaluator;
 }
 Evaluator::Evaluator(){
 	derniereOp="";
 }
 Evaluator::Evaluator(const Evaluator&){}
 
-
-
+void Evaluator::pileDup(){
+	Expression* aExpr=pile.back();
+	aExpr->ref++;
+	pile.push_back(aExpr);
+}
+void Evaluator::compose(const string &op){
+	if(pile.size()>1){
+		//cloner gauche
+		Composant *G=pile.back()->pRacine->clone();
+		//cloner droite
+		Composant *D=pile.at(pile.size()-2)->pRacine->clone();
+		Noeud *racineCompo=new Noeud(op,G,D);
+		Expression* aExpr=new Expression(racineCompo);
+		pile.push_back(aExpr);
+	}
+}
 
