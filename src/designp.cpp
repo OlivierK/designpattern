@@ -68,8 +68,7 @@ Evaluator& Evaluator::instance(){
 Evaluator::Evaluator(){
 }
 Evaluator::~Evaluator(){
-  for(int i=0;i<pile.size();i++)
-    delete pile.at(i);
+  pile.clear();
 }
 Evaluator::Evaluator(const Evaluator&){}
 
