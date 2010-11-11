@@ -3,16 +3,17 @@
 import pygtk
 pygtk.require('2.0')
 import gtk
-import kernel
+#import kernel
+import libdesignp
 
 class Table:
     # Our callback.
     # The data passed to this method is printed to stdout
     def callbackENTER(self, widget, data=None):
-        print "callbackENTER - %s was pressed" kernel.eval("1 + 1")
+        print "callbackENTER - %s was pressed" % kernel.eval("1 + 1")
 
     def callbackDUP(self, widget, data=None):
-        print "callbackDUP - %s was pressed" % data 
+        print "callbackDUP - %s was pressed" % data
 
     def callbackCOMPOSE(self, widget, data=None):
         print "callbackCOMPOSE - %s was pressed" % data
